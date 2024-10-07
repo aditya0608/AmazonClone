@@ -1,0 +1,45 @@
+{
+  "type": "record",
+  "name": "Product",
+  "namespace": "schema",
+  "fields": [
+    {"name": "productId", "type":"string", "doc": "The id of the product"},
+    {"name": "productDescription", "type":"string", "doc": "The description of the product"},
+    {"name": "productPrice", "type":"double", "doc": "price of the product"},
+    {"name": "productImage", "type":"bytes", "doc": "The image of the product"},
+    {
+      "name": "productCategory",
+      "type": {
+        "name": "ProductCategory",
+        "type": "record",
+        "fields": [
+          {
+            "name": "categoryName",
+            "type": "string"
+          },
+          {
+            "name": "categoryCode",
+            "type": "string"
+          },
+          {
+            "name": "categoryDescription",
+            "type": "string"
+          }
+        ],
+        "items":null
+      }
+    },
+    {
+      "name": "productType",
+      "type": {
+        "type": "enum",
+        "name": "ProductType",
+        "symbols": [
+          "NEW",
+          "EXISTING"
+        ]
+      },
+      "default": "NEW"
+    }
+  ]
+}
